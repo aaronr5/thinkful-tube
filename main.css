@@ -1,0 +1,17 @@
+body {
+  background: grey;
+}
+
+.container {
+  margin: auto;
+  width: 1000px;
+  text-align: center;
+}
+
+.search-form {
+  margin: auto;
+}
+
+#submit-btn {
+  margin: 10px;
+}
