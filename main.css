@@ -1,17 +1,82 @@
 body {
-  background: grey;
+  background: #363f4f;
+  font-size: 0;
+}
+
+h1{
+  font-size: 40px;
+  margin-top: 100px;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#search-form {
+  font-size: 25px;
+}
+
+#user-input {
+  -webkit-appearance: none;
+  padding: 5px 0 5px 0;
+}
+
+#submit-btn {
+    padding: 5px 5px 5px 5px;
 }
 
 .container {
   margin: auto;
-  width: 1000px;
+  width: 960px;
   text-align: center;
 }
 
-.search-form {
+.results-form {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
   margin: auto;
 }
 
-#submit-btn {
-  margin: 10px;
+.result-item {
+  border-radius: 2px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  color: white;
+  background: #536177;
+}
+
+.item-info {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+
+.item-title {
+  font-size: 25px;
+}
+
+.item-description {
+  font-size: 15px;
+}
+
+.item-channel {
+  font-size: 20px;
+}
+
+.item-image {
+  padding: 10px;
 }

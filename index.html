@@ -6,6 +6,7 @@
 
     <!-- Stylesheets ---------------------------------------------------------->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="main.css">
 
     <!-- jQuery -------------------------------------------------------------->
@@ -15,10 +16,9 @@
   <body>
     <div class="container">
       <h1>Thinkful Tube</h1>
-      <form class="search-form" action="index.html" method="post">
-        <input type="text" name="user-input" value="Search Youtube...">
-        <br />
-        <button id="submit-btn" type="submit" name="button">Search</button>
+      <form id="search-form" action="index.html" method="post">
+        <input id="user-input" type="text" name="user-input" placeholder="Search Youtube...">
+        <button id="submit-btn" type="submit" name="button"><span class="fa fa-search"></span></button>
       </form>
     </div>
 
