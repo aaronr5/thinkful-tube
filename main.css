@@ -121,6 +121,7 @@ button:focus {
 
 .item-image {
   padding: 10px;
+  cursor: pointer;
 }
 
 .page-controls {
@@ -169,7 +170,7 @@ button:focus {
 
 #video-frame {
   position: relative;
-  margin: 50px auto;
+  margin: 150px auto;
   text-align: center;
   padding: 0;
   opacity: 1;

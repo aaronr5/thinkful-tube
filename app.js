@@ -9,7 +9,7 @@ var state = {
 var resultsPageTemplate = '<div>' +
                             '<form class="results-form" action="index.html" method="post">' +
                               '<input id="user-input" type="text" name="user-input" placeholder="Search Youtube...">' +
-                              '<button id="submit-btn" type="submit" name="button"><span class="fa fa-search"></span></button>' +
+                              '<button id="submit-btn" class="result-page-submit" type="submit" name="button"><span class="fa fa-search"></span></button>' +
                             '</form>' +
                             '<h4 class="current-results-for"></h4>' +
                             '<section class="results"></section>' +
@@ -83,7 +83,7 @@ function renderThumbnails(itemArray) {
   var elementArray = itemArray.map(function(item) {
     var thisElement = $(resultsItemTemplate);
     thisElement.find('.item-image').attr('src', item.snippet.thumbnails.medium.url);
-    thisElement.find('.item-image').attr('data-video-link', 'https://www.youtube.com/watch?v=' + item.id.videoId + '?autoplay=1');
+    thisElement.find('.item-image').attr('data-video-link', 'https://www.youtube.com/embed/' + item.id.videoId + '?autoplay=1');
     thisElement.find('.item-title').append('<a href="#">' + item.snippet.title + '</a>');
     thisElement.find('.item-title').attr('data-video-link', 'https://www.youtube.com/embed/' + item.id.videoId + '?autoplay=1');
     thisElement.find('.item-channel').text(item.snippet.channelTitle);
@@ -131,11 +131,26 @@ function titleClickHandler() {
 }
 
 function imageClickHandler() {
-
+  $('.container').on('click', '.item-image', function(event) {
+    var videoLink = $(this).attr('data-video-link');
+    renderLightBox(videoLink);
+  });
 }
 
 function watchForSubmit(state) {
   $('#search-form').submit(function(event) {
+    event.preventDefault();
+    state.currentSearchTerm = $('#user-input').val();
+    if(!state.currentSearchTerm) {
+      return;
+    }else {
+      getDataFromYT(state.currentSearchTerm, displayResults);
+    }
+  });
+}
+
+function submitOnResultsPage(state) {
+  $('.container').on('click', ".result-page-submit", function(event) {
     event.preventDefault();
     state.currentSearchTerm = $('#user-input').val();
     if(!state.currentSearchTerm) {
@@ -153,4 +168,5 @@ $(function() {
   nextPageClickHandler();
   prevPageClickHandler();
   closePopOutClick();
+  submitOnResultsPage(state);
 });
