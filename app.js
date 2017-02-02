@@ -28,7 +28,7 @@ var resultsItemTemplate = '<div class="result-item">' +
                             '<img class="item-image" />' +
                             '<div class="item-info">' +
                               '<h3 class="item-title"></h3>' +
-                              '<p class="item-channel"></p>' +
+                              '<a target="_blank" class="item-channel"></a>' +
                               '<p class="item-description"></p>' +
                             '</div>' +
                           '</div>';
@@ -61,6 +61,7 @@ function getDataFromYT(searchValue, callback, token) {
 
 function displayResults(data) {
   window.scrollTo(0, 0);
+  console.log(data);
   var resultsElement = $(resultsPageTemplate);
   $(resultsElement).find('.results').append(renderThumbnails(data.items));
   $(resultsElement).find('#user-input').attr('value', state.currentSearchTerm);
@@ -87,6 +88,7 @@ function renderThumbnails(itemArray) {
     thisElement.find('.item-title').append('<a href="#">' + item.snippet.title + '</a>');
     thisElement.find('.item-title').attr('data-video-link', 'https://www.youtube.com/embed/' + item.id.videoId + '?autoplay=1');
     thisElement.find('.item-channel').text(item.snippet.channelTitle);
+    thisElement.find('.item-channel').attr('href', 'https://www.youtube.com/user/' + item.snippet.channelTitle);
     thisElement.find('.item-description').text(item.snippet.description);
     return thisElement;
   });
@@ -103,7 +105,6 @@ function renderLightBox(videoLink) {
 // Event handlers //////////////////////////////////////////////////////////////
 function closePopOutClick() {
   $('.container').on('click', '.pop-out-close', function(event) {
-    console.log('clicked');
     $('#video-frame').attr('src', '');
     $('.pop-out-wrapper').css('display', 'none');
   });
