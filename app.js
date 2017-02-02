@@ -61,7 +61,6 @@ function getDataFromYT(searchValue, callback, token) {
 
 function displayResults(data) {
   window.scrollTo(0, 0);
-  console.log(data);
   var resultsElement = $(resultsPageTemplate);
   $(resultsElement).find('.results').append(renderThumbnails(data.items));
   $(resultsElement).find('#user-input').attr('value', state.currentSearchTerm);
